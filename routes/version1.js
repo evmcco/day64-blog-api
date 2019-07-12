@@ -31,7 +31,7 @@ router.delete("/post/delete/:id?", async (req, res, next) => {
 router.post("/post/add", async (req, res, next) => {
   const { title, content, author_id } = req.body;
   postsModel.addPost(title, content, author_id);
-  if (response.command === "INSERT" && response.rowCount >= 1) {
+  if (res.command === "INSERT" && res.rowCount >= 1) {
     res.sendStatus(200);
   } else {
     res.send(`Could not add new blog post: ${title}`).status(409);
